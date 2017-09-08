@@ -11,18 +11,24 @@ class  Project{
 
   static postAll(data,callback){
     let query = `INSERT INTO project(nama,status)VALUES("${data.nama}","${data.status}")`
-    db.run(query,(err)=>{
-      callback(err)
+    db.run(query,()=>{
+      callback()
     })
   }
-  static findById(id,data,cb){
-    let query = `SELECT * FROM project WHERE id = ${id}`
-      db.run(query,(err,data)=>{
+  static findById(data,cb){
+    let query = `SELECT * FROM project WHERE id = ${data.id}`
+      db.all(query,(err,data)=>{
         cb(data)
       })
   }
   static update(data,id,cb){
     let query = `UPDATE project SET nama = "${data.nama}", status = "${data.status}" WHERE id = ${id}`
+    db.run(query,()=>{
+      cb()
+    })
+  }
+  static delete(id,cb){
+    let query = `DELETE FROM project WHERE id = ${id}`
     db.run(query,()=>{
       cb()
     })

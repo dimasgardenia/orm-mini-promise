@@ -17,6 +17,23 @@ router.post('/',(req,res)=>{
   })
 })
 
-router.get('/update/:id',)
+router.get('/edit/:id', (req,res)=>{
+  modelProject.findById(req.params.id,(data)=>{
+    //console.log(data);
+    res.render('updateproject',{data:data})
+    //res.send(data)
+  })
+})
 
+router.post('/edit/:id',(req,res)=>{
+  modelProject.update(req.body.id,req.params.id,()=>{
+    res.redirect('/list')
+  })
+})
+
+router.get('/delete/:id',(req,res)=>{
+  modelProject.delete(req.params.id,()=>{
+    res.redirect('/list')
+  })
+})
 module.exports = router
