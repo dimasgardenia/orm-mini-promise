@@ -10,6 +10,13 @@ router.get('/',(req,res)=>{
   })
 })
 
-router.post()
+router.post('/',(req,res)=>{
+  modelProject.postAll(req.body,()=>{
+    res.redirect('/list')
+    ///res.send(data)
+  })
+})
+
+router.get('/update/:id',)
 
 module.exports = router

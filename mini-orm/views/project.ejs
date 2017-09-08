@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Project List</title>
-  </head>
-  <body>
-    <table border="1">
+<head>
+  <meta charset="utf-8">
+  <title>projet</title>
+</head>
+<body>
+  <h1>project</h1>
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>nama</th>
+      <th>status</th>
+    </tr>
+    <% data.forEach (d =>{%>
       <tr>
-        <th>ID</th>
-        <th>nama project</th>
-        <th>status</th>
+        <td>
+          <%= d.id %>
+        </td>
+        <td>
+          <%= d.nama %>
+        </td>
+        <td>
+          <%= d.status %>
+        </td>
+        <td><a href="/contacs/edit/<%= d.id %>"><button type="button" name="button">Edit</button></a></td>
+        <td><a href="/contacs/delete/<%= d.id %>"><button type="button" name="button">Delete</button></a></td>
       </tr>
-      <% data.forEach(d=>{ %>
-        <tr>
-          <td>
-            <%= d.id %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <%= d.nama %>
-          </td>
-          <tr>
-            <td>
-              <%= d.status %>
-            </td>
-            <td><a href="/project/update/<%= d.id%>"><button type="button" name="button">Edit</button></a>
-              <td><a href="/project/delete/<%= d.id%>"><button type="button" name="button">delete</button></a>
-          </tr>
-        </tr>
-        <% }) %>
-    </table>
-    <br>
-    <br>
-    <form action="/project" method="post">
-      <table><b>nama<b></table>
-        <input type="text" name="nama" placeholder="input your project name">
-        <br>
-        <table><b>status<b></table>
-        <input type="text" name="status" placeholder="input your project status">
-        <button type="button" name="button">submit</button>
-    </form>
-  </body>
+      <% }) %>
+  </table>
+  <br>
+  <left>
+    <form action="/list" method="post">
+      <label><b>name project<b></label>
+      <input type="text" name="nama" placeholder="please input your name">
+      <br>
+      <label><b>status<b></label>
+      <input type="text" name="status" placeholder="status project">
+      <br>
+      <button type="submit" name="submit">Submit </button>
+    </form><br>
+  </left>
+  <br>
+</body>
 </html>
